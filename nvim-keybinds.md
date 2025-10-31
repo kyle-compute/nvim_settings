@@ -1,118 +1,182 @@
-# LazyVim Keybindings Cheat Sheet
+# Neovim Keybinds Reference
 
 **Leader Key:** `<Space>`
 
-**Priority Order:** Learn top sections first - they're 90% of what you'll use daily!
+---
+
+## TABLE OF CONTENTS
+
+- **MOVEMENT**: Cursor, Window, Buffer, Code Navigation
+- **EDITING**: Basic Editing, Text Objects, Comments, Visual Mode
+- **FILES & BUFFERS**: File Finding, File Explorer, Buffer Management
+- **SEARCH & REPLACE**: Search, Replace
+- **CODE**: LSP Actions, TypeScript
+- **SPLITS & WINDOWS**: Creating, Resizing, Closing
+- **TERMINAL**: Terminal Operations
+- **GIT**: Git Operations, Conflicts
+- **PYTHON**: Virtual Environment, Debugging
+- **DATABASE**: Database UI
+- **REST API**: HTTP Requests
+- **HARPOON**: Quick File Pins
+- **UTILITIES**: Toggles, Plugin Managers
+- **WHICH-KEY MENUS**: Interactive Menu Triggers
 
 ---
 
-## **1. 🚨 Survival Mode - Can't Use Vim Without These**
+## MOVEMENT
 
-*Why: You literally can't edit files, save, or quit without these*
-
-### Basic Movement (USE THESE INSTEAD OF ARROW KEYS!)
+### Cursor Movement
 - `h/j/k/l` - Left/Down/Up/Right
-- `i` - Enter insert mode (start typing)
-- `<Esc>` - Exit insert mode back to normal mode
-- `u` - Undo
-- `<Ctrl-r>` - Redo
-
-### Save & Quit
-- `<Ctrl-s>` - **Save file** (works in normal and insert mode)
-- `:w` - Save file
-- `:q` - Quit
-- `:wq` or `ZZ` - Save and quit
-- `:q!` - Quit without saving
-- `:qa` - Quit all windows
-
----
-
-## **2. 🔥 Daily Essentials - Use These Every 30 Seconds**
-
-*Why: These make you productive. Without them, you're just using Notepad*
-
-### File & Project Navigation
-- `<Space><Space>` - **Find files** (fuzzy search) - YOUR MOST USED COMMAND
-- `<Space>/` - **Search text in project** (grep)
-- **`<Space>sg`** - **Live grep** (interactive search - type and see results instantly)
-- `<Space>ss` - Search symbols in file (functions, classes, variables)
-- `<Space>e` - **Toggle file explorer**
-- `<Space>fr` - Recent files
+- `w` - Forward one word
+- `b` - Backward one word
+- `0` - Start of line
+- `$` - End of line
+- `gg` - Top of file
+- `G` - Bottom of file
+- `<Ctrl-d>` - Scroll down half page
+- `<Ctrl-u>` - Scroll up half page
 - `<Ctrl-o>` - Jump back to previous location
 - `<Ctrl-i>` - Jump forward
-- `:b <name>` - Quick switch to buffer by typing part of filename
+- `*` - Search word under cursor
 
-### File Explorer (Neo-tree)
-*When inside file explorer after `<Space>e`:*
-- `.` - Toggle hidden files
-- `<Backspace>` - Navigate up to parent directory
-- `a` - Create new file
-- `d` - Delete file
-- `r` - Rename file
-- `?` - Show all available commands
+### Window Movement
+- `<Ctrl-h>` - Move to left split
+- `<Ctrl-j>` - Move to down split
+- `<Ctrl-k>` - Move to up split
+- `<Ctrl-l>` - Move to right split
 
-### Terminal (tmux auto-starts in your terminal)
-- `<Ctrl-\>` - **Toggle terminal** (opens/closes, persists session)
-- `<Space>th` - Open horizontal terminal at bottom
-- `<Space>tv` - Open vertical terminal on right
-- **In terminal: `<Esc><Esc>`** - Exit terminal mode (then use splits navigation)
-- After exiting terminal mode: `<Ctrl-h/j/k/l>` - Navigate to other splits
+### Buffer Movement
+- `<Shift-h>` - Previous buffer
+- `<Shift-l>` - Next buffer
+- `<Ctrl-PageUp>` - Previous buffer (skip file explorer)
+- `<Ctrl-PageDown>` - Next buffer (skip file explorer)
 
-**Note:** tmux auto-starts in your system terminal. For multiple UV envs, use tmux windows (see tmux-cheatsheet.md)
-
-### Buffer Management (Switching Between Open Files)
-- `<Shift-h>` - Previous buffer/file
-- `<Shift-l>` - Next buffer/file
-- `<Space>bd` - Close current buffer/file
-
----
-
-## **3. 💻 Code Intelligence - What Makes This an IDE**
-
-*Why: LSP features are why you use Neovim instead of nano/vim. This is the magic*
-
-### Navigation
-- `gd` - **Go to definition** (follow function/class to where it's defined)
-- `gr` - **Find all references** (see everywhere this is used)
-- `gf` - **Go to file** under cursor (jump to imports/file paths)
-- `K` - **Hover documentation** (see type hints, docstrings, docs)
-- `<Ctrl-o>` - Jump back after `gd`
+### Code Navigation
+- `gd` - Go to definition
+- `gr` - Go to references
+- `gI` - Go to implementation
+- `gy` - Go to type definition
+- `gf` - Go to file under cursor
+- `K` - Hover documentation
 - `]]` - Next function/class
 - `[[` - Previous function/class
-
-### Code Actions & Refactoring
-- `<Space>ca` - **Code actions** (auto-fix imports, quick fixes, refactorings)
-- `<Space>cr` - **Rename symbol** (rename variable/function everywhere)
-- `<Space>cf` - **Format file** (runs Ruff for Python, Prettier for JS/TS)
-- `<Space>cd` - Show line diagnostics (errors/warnings)
-
-### Diagnostics (Errors & Warnings)
 - `]d` - Next diagnostic
 - `[d` - Previous diagnostic
 - `]e` - Next error
 - `[e` - Previous error
-- `]c` - Next git change (hunk)
-- `[c` - Previous git change (hunk)
+- `]c` - Next git change
+- `[c` - Previous git change
 
 ---
 
-## **4. 🪟 Splits & Windows - Working with Multiple Files**
+## EDITING
 
-*Why: Full-stack dev means viewing backend + frontend + terminal simultaneously*
+### Basic Editing
+- `i` - Enter insert mode
+- `<Esc>` - Exit insert mode
+- `u` - Undo
+- `<Ctrl-r>` - Redo
+- `dd` - Delete line
+- `yy` - Copy (yank) line
+- `p` - Paste after cursor
+- `P` - Paste before cursor
+- `J` - Join line below to current line
+- `<Alt-j>` - Move current line down
+- `<Alt-k>` - Move current line up
+
+### Text Objects
+- `ciw` - Change inner word
+- `ci"` - Change inside quotes
+- `ci(` - Change inside parentheses
+- `ci{` - Change inside braces
+- `di(` - Delete inside parentheses
+- `vi{` - Visual select inside braces
+
+### Comments
+- `gcc` - Toggle comment line
+- `<Ctrl-/>` - Toggle comment (insert mode too)
+- `gc` - Comment selected lines (visual mode)
+
+### Visual Mode
+- `v` - Visual mode (select characters)
+- `V` - Visual line mode (select whole lines)
+- `<Ctrl-v>` - Visual block mode (select columns)
+- `d` - Delete selection
+- `y` - Copy (yank) selection
+- `c` - Change selection
+- `>` - Indent right
+- `<` - Indent left
+
+---
+
+## FILES & BUFFERS
+
+### File Finding
+- `<Space><Space>` - Find files (fuzzy search)
+- `<Space>fr` - Recent files
+- `<Space>fp` - Find/switch projects
+- `<Space>e` - Toggle file explorer
+- `:b <name>` - Quick switch to buffer by name
+
+### File Explorer (Neo-tree)
+- `.` - Toggle hidden files
+- `<Backspace>` - Navigate up to parent
+- `a` - Create new file
+- `d` - Delete file
+- `r` - Rename file
+- `?` - Show all commands
+
+### Buffer Management
+- `<Space>bd` - Close current buffer
+- `<Ctrl-s>` - Save file
+- `:w` - Save file
+- `:q` - Quit
+- `:wq` or `ZZ` - Save and quit
+- `:q!` - Quit without saving
+- `:qa` - Quit all
+
+---
+
+## SEARCH & REPLACE
+
+### Search
+- `<Space>/` - Search text in project (grep)
+- `<Space>sg` - Live grep (interactive)
+- `<Space>ss` - Search symbols in file
+- `/pattern` - Search forward
+- `?pattern` - Search backward
+- `n` - Next search result
+- `N` - Previous search result
+
+### Replace
+- `<Space>sr` - Search and replace in project
+- `:s/old/new/g` - Replace in current line
+- `:%s/old/new/g` - Replace in entire file
+- `:%s/old/new/gc` - Replace with confirmation
+
+---
+
+## CODE
+
+### LSP Actions
+- `<Space>ca` - Code actions
+- `<Space>cr` - Rename symbol
+- `<Space>cf` - Format file
+- `<Space>cd` - Show line diagnostics
+
+### TypeScript
+- `<Space>co` - Organize imports
+- `<Space>cR` - Rename file
+
+---
+
+## SPLITS & WINDOWS
 
 ### Creating Splits
-- `:vsp` - Vertical split (side-by-side)
-- `:sp` - Horizontal split (top/bottom)
+- `:vsp` - Vertical split
+- `:sp` - Horizontal split
 - `<Space>-` - Split horizontally
 - `<Space>|` - Split vertically
-
-### Navigating Between Splits
-- `<Ctrl-h>` - Move to left split
-- `<Ctrl-j>` - Move to down split (or terminal)
-- `<Ctrl-k>` - Move to up split
-- `<Ctrl-l>` - Move to right split
-- **`<Ctrl-PageDown>`** - **Next buffer/file** (like Chrome tabs - skips file explorer)
-- **`<Ctrl-PageUp>`** - **Previous buffer/file** (like Chrome tabs - skips file explorer)
 
 ### Resizing Splits
 - `<Ctrl-Up>` - Increase height
@@ -122,78 +186,35 @@
 
 ### Closing Splits
 - `:q` - Close current split
+- `:qa` - Quit all
 - `:only` - Close all other splits
 
 ---
 
-## **5. 📝 Efficient Editing - Moving & Changing Text Fast**
+## TERMINAL
 
-*Why: This is what makes Vim "fast". These save hundreds of keystrokes per day*
-
-### Better Movement
-- `w` - Jump forward one word
-- `b` - Jump backward one word
-- `0` - Start of line
-- `$` - End of line
-- `gg` - Go to top of file
-- `G` - Go to bottom of file
-- `<Ctrl-d>` - Scroll down half page
-- `<Ctrl-u>` - Scroll up half page
-
-### Editing Commands
-- `dd` - Delete line
-- `yy` - Copy (yank) line
-- `p` - Paste after cursor
-- `P` - Paste before cursor
-- **`gcc`** - **Toggle comment line** (use 50+ times/day!)
-- **`<Ctrl-/>`** - **Toggle comment** (works in insert mode too)
-- `gc` (in visual mode) - Comment selected lines
-- `J` - Join line below to current line
-- `ciw` - Change inner word (delete word and enter insert mode)
-- `ci"` - Change text inside quotes
-- `di(` - Delete inside parentheses
-- `vi{` - Visual select inside braces
-- `<Alt-j>` - Move current line down
-- `<Alt-k>` - Move current line up
-
-### Visual Mode (Selecting Text - Like Shift+Arrows in VSCode)
-- **`V`** - **Visual line mode** (select whole lines, then use `j/k` or arrows)
-- `v` - Visual mode (select characters)
-- `<Ctrl-v>` - Visual block mode (select columns)
-- **Quick selections:**
-  - `V` then `3j` - Select 3 lines down
-  - `V` then `gg` - Select to top of file
-  - `V` then `G` - Select to bottom of file
-  - `V` then `}` - Select to next paragraph
-- **After selecting:**
-  - `d` - Delete
-  - `y` - Copy (yank)
-  - `c` - Change (delete and enter insert mode)
-  - `>` - Indent right
-  - `<` - Indent left
-  - `gc` - Comment selected lines
+- `<Ctrl-\>` - Toggle terminal
+- `<Space>th` - Open horizontal terminal
+- `<Space>tv` - Open vertical terminal
+- `<Space>tf` - Open floating terminal
+- `<Esc><Esc>` - Exit terminal mode (in terminal)
 
 ---
 
-## **6. 🔍 Search & Replace - Finding & Changing Text**
+## GIT
 
-*Why: Necessary for refactoring and finding things, but less frequent than navigation*
-
-- `/pattern` - Search forward
-- `?pattern` - Search backward
-- `n` - Next search result
-- `N` - Previous search result
-- `*` - Search for word under cursor
-- `<Space>sr` - Search and replace in project
-- `:s/old/new/g` - Replace in current line
-- `:%s/old/new/g` - Replace in entire file
-- `:%s/old/new/gc` - Replace with confirmation
+- `<Space>gg` - Open LazyGit
+- `<Space>gb` - Git blame current line
+- `<Space>gB` - Git browse (open in browser)
+- `<Space>gco` - Git conflict: choose ours
+- `<Space>gct` - Git conflict: choose theirs
+- `<Space>gcb` - Git conflict: choose both
+- `<Space>gcn` - Git conflict: next
+- `<Space>gcp` - Git conflict: previous
 
 ---
 
-## **7. 🐍 Python-Specific Features**
-
-*Why: Useful but you won't use these every minute*
+## PYTHON
 
 ### Virtual Environment
 - `<Space>cv` - Select Python virtual environment
@@ -207,118 +228,65 @@
 
 ---
 
-## **8. 🎨 Git Integration**
+## DATABASE
 
-*Why: LazyGit is AMAZING for staging/commits - way faster than terminal git*
-
-- **`<Space>gg`** - **Open LazyGit** (stage files, commit, push - all in one UI!)
-- `<Space>gb` - Git blame current line
-- `<Space>gB` - Git browse (open in browser)
-- `]c` - Next git change (hunk)
-- `[c` - Previous git change (hunk)
-- `<Space>gco` - Git conflict: choose ours
-- `<Space>gct` - Git conflict: choose theirs
+- `<Space>db` - Toggle Database UI
 
 ---
 
-## **9. 🛠️ Advanced Features - For Specific Workflows**
+## REST API
 
-*Why: You'll use these when you need them, not every day*
-
-### Project Management
-- `<Space>fp` - Find/switch projects
-- `<Space>ha` - Harpoon: add current file (pin favorites)
-- `<Space>hh` - Harpoon: quick menu (see pinned files)
-- `<Space>1-4` - Jump to harpooned file 1-4
-
-### Database (DADBOD)
-- `<Space>db` - Toggle Database UI (query PostgreSQL)
-
-### REST API Testing
-- `<Space>rr` - Run HTTP request (in .http file)
+- `<Space>rr` - Run HTTP request (.http file)
 - `<Space>rt` - Toggle HTTP result view
 - `<Space>rc` - Copy request as cURL
 
-### Toggles (`<Space>u*`)
+---
+
+## HARPOON
+
+- `<Space>ha` - Harpoon: add current file
+- `<Space>hh` - Harpoon: quick menu
+- `<Space>1` - Jump to harpooned file 1
+- `<Space>2` - Jump to harpooned file 2
+- `<Space>3` - Jump to harpooned file 3
+- `<Space>4` - Jump to harpooned file 4
+
+---
+
+## UTILITIES
+
+### Toggles
 - `<Space>uf` - Toggle auto-format on save
 - `<Space>ul` - Toggle line numbers
 - `<Space>uw` - Toggle word wrap
 - `<Space>us` - Toggle spell check
 
----
-
-## **10. ⚙️ Utilities - Rarely Used but Good to Know**
-
-*Why: You'll need these once in a while for maintenance*
-
-### Lazy Plugin Manager
+### Plugin Managers
 - `<Space>l` - Open Lazy plugin manager
-- In Lazy: `U` to update, `S` to sync, `X` to clean
+- `:Mason` - Open Mason (LSP/tools installer)
 
-### Mason (LSP/Tools Installer)
-- `:Mason` - Open Mason installer
-- In Mason: `i` to install, `u` to update, `X` to uninstall
-
-### PDF Viewer
-- `<Space>p` - Open PDF in Zathura (when on a .pdf file)
+### Other
+- `<Space>p` - Open PDF in Zathura (.pdf file)
+- `<Space>?` - Open this cheatsheet
+- `<Space>fk` - Edit this cheatsheet file
 
 ---
 
-## **💡 Common Workflows**
+## WHICH-KEY MENUS
 
-### Full Stack Development Layout:
-```
-1. cd ~/razorbill/web && nvim
-2. <Space><Space> → backend/main.py
-3. :vsp → vertical split
-4. <Ctrl-l> → move right
-5. <Space><Space> → frontend/App.tsx
-6. <Space>th → terminal at bottom
-7. <Ctrl-j> → move to terminal
-8. Run: uvicorn main:app --reload
-9. <Ctrl-k> → back to code
-```
-**You now have:** Backend | Frontend with terminal below!
+Press and wait 1 second for interactive menus:
 
-### Quick Edit-Test-Commit Workflow:
-```
-1. Make code changes
-2. <Ctrl-s> → save
-3. <Ctrl-\> → toggle terminal
-4. Run tests/linter
-5. <Ctrl-\> → hide terminal
-6. gd → check implementation
-7. <Space>cf → format
-8. <Ctrl-\> → show terminal
-9. git add/commit
-```
+- `<Space>` - All leader commands
+- `g` - Goto operations
+- `]` - Next navigation
+- `[` - Previous navigation
+- `<Space>c` - Code actions
+- `<Space>g` - Git operations
+- `<Space>s` - Search operations
+- `<Space>d` - Debug/Database
+- `<Space>u` - UI toggles
+- `?` (in Neo-tree) - All file explorer commands
 
----
-
-## **🎯 TL;DR - The 20% You'll Use 80% of the Time**
-
-**Must memorize TODAY:**
-1. `<Space><Space>` - Find files
-2. `<Space>sg` - Live grep (interactive search)
-3. `<Ctrl-s>` - Save
-4. `gd` - Go to definition
-5. `gcc` / `<Ctrl-/>` - Toggle comment
-6. `<Ctrl-\>` - Toggle terminal
-7. `<Esc><Esc>` - Exit terminal mode
-8. `<Ctrl-PageUp/Down>` - Cycle between splits
-9. `<Space>ca` - Code actions
-10. `*` - Search word under cursor
-11. `gf` - Go to file under cursor
-
-**Learn this week:**
-- Basic movement: `h/j/k/l`, `w/b`, `0/$`
-- Editing: `dd`, `yy`, `p`, `ciw`
-- LSP: `gr`, `K`, `<Space>cr`, `<Space>cf`
-- Splits: `:vsp`, `:sp`
-
-**Learn eventually:**
-- Everything else as you need it!
-
----
-
-**Remember:** Press `<Space>` and wait - a popup shows all available commands!
+In visual mode:
+- `<Space>` - Operations on selection
+- `g` - Goto for selection
