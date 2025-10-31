@@ -33,17 +33,32 @@
 
 ### File & Project Navigation
 - `<Space><Space>` - **Find files** (fuzzy search) - YOUR MOST USED COMMAND
-- `<Space>/` - **Search text in project** (grep) - SECOND MOST USED
+- `<Space>/` - **Search text in project** (grep)
+- **`<Space>sg`** - **Live grep** (interactive search - type and see results instantly)
+- `<Space>ss` - Search symbols in file (functions, classes, variables)
 - `<Space>e` - **Toggle file explorer**
 - `<Space>fr` - Recent files
 - `<Ctrl-o>` - Jump back to previous location
 - `<Ctrl-i>` - Jump forward
+- `:b <name>` - Quick switch to buffer by typing part of filename
 
-### Terminal
+### File Explorer (Neo-tree)
+*When inside file explorer after `<Space>e`:*
+- `.` - Toggle hidden files
+- `<Backspace>` - Navigate up to parent directory
+- `a` - Create new file
+- `d` - Delete file
+- `r` - Rename file
+- `?` - Show all available commands
+
+### Terminal (tmux auto-starts in your terminal)
 - `<Ctrl-\>` - **Toggle terminal** (opens/closes, persists session)
 - `<Space>th` - Open horizontal terminal at bottom
 - `<Space>tv` - Open vertical terminal on right
-- In terminal: `<Ctrl-h/j/k/l>` - Navigate to other splits
+- **In terminal: `<Esc><Esc>`** - Exit terminal mode (then use splits navigation)
+- After exiting terminal mode: `<Ctrl-h/j/k/l>` - Navigate to other splits
+
+**Note:** tmux auto-starts in your system terminal. For multiple UV envs, use tmux windows (see tmux-cheatsheet.md)
 
 ### Buffer Management (Switching Between Open Files)
 - `<Shift-h>` - Previous buffer/file
@@ -59,8 +74,11 @@
 ### Navigation
 - `gd` - **Go to definition** (follow function/class to where it's defined)
 - `gr` - **Find all references** (see everywhere this is used)
+- `gf` - **Go to file** under cursor (jump to imports/file paths)
 - `K` - **Hover documentation** (see type hints, docstrings, docs)
 - `<Ctrl-o>` - Jump back after `gd`
+- `]]` - Next function/class
+- `[[` - Previous function/class
 
 ### Code Actions & Refactoring
 - `<Space>ca` - **Code actions** (auto-fix imports, quick fixes, refactorings)
@@ -73,6 +91,8 @@
 - `[d` - Previous diagnostic
 - `]e` - Next error
 - `[e` - Previous error
+- `]c` - Next git change (hunk)
+- `[c` - Previous git change (hunk)
 
 ---
 
@@ -91,6 +111,8 @@
 - `<Ctrl-j>` - Move to down split (or terminal)
 - `<Ctrl-k>` - Move to up split
 - `<Ctrl-l>` - Move to right split
+- **`<Ctrl-PageDown>`** - **Next buffer/file** (like Chrome tabs - skips file explorer)
+- **`<Ctrl-PageUp>`** - **Previous buffer/file** (like Chrome tabs - skips file explorer)
 
 ### Resizing Splits
 - `<Ctrl-Up>` - Increase height
@@ -123,6 +145,10 @@
 - `yy` - Copy (yank) line
 - `p` - Paste after cursor
 - `P` - Paste before cursor
+- **`gcc`** - **Toggle comment line** (use 50+ times/day!)
+- **`<Ctrl-/>`** - **Toggle comment** (works in insert mode too)
+- `gc` (in visual mode) - Comment selected lines
+- `J` - Join line below to current line
 - `ciw` - Change inner word (delete word and enter insert mode)
 - `ci"` - Change text inside quotes
 - `di(` - Delete inside parentheses
@@ -130,11 +156,22 @@
 - `<Alt-j>` - Move current line down
 - `<Alt-k>` - Move current line up
 
-### Visual Mode
+### Visual Mode (Selecting Text - Like Shift+Arrows in VSCode)
+- **`V`** - **Visual line mode** (select whole lines, then use `j/k` or arrows)
 - `v` - Visual mode (select characters)
-- `V` - Visual line mode (select lines)
 - `<Ctrl-v>` - Visual block mode (select columns)
-- After selecting: `d` to delete, `y` to copy, `c` to change
+- **Quick selections:**
+  - `V` then `3j` - Select 3 lines down
+  - `V` then `gg` - Select to top of file
+  - `V` then `G` - Select to bottom of file
+  - `V` then `}` - Select to next paragraph
+- **After selecting:**
+  - `d` - Delete
+  - `y` - Copy (yank)
+  - `c` - Change (delete and enter insert mode)
+  - `>` - Indent right
+  - `<` - Indent left
+  - `gc` - Comment selected lines
 
 ---
 
@@ -172,13 +209,13 @@
 
 ## **8. 🎨 Git Integration**
 
-*Why: Helpful but you might use terminal/GitHub Desktop more*
+*Why: LazyGit is AMAZING for staging/commits - way faster than terminal git*
 
-- `<Space>gg` - Open LazyGit
+- **`<Space>gg`** - **Open LazyGit** (stage files, commit, push - all in one UI!)
 - `<Space>gb` - Git blame current line
 - `<Space>gB` - Git browse (open in browser)
-- `]h` - Next git hunk (change)
-- `[h` - Previous git hunk
+- `]c` - Next git change (hunk)
+- `[c` - Previous git change (hunk)
 - `<Space>gco` - Git conflict: choose ours
 - `<Space>gct` - Git conflict: choose theirs
 
@@ -262,15 +299,16 @@
 
 **Must memorize TODAY:**
 1. `<Space><Space>` - Find files
-2. `<Space>/` - Search in project
+2. `<Space>sg` - Live grep (interactive search)
 3. `<Ctrl-s>` - Save
 4. `gd` - Go to definition
-5. `<Ctrl-\>` - Toggle terminal
-6. `<Ctrl-h/j/k/l>` - Navigate splits
-7. `<Shift-h/l>` - Switch buffers
-8. `<Space>ca` - Code actions
-9. `<Esc>` - Exit insert mode
-10. `i` - Enter insert mode
+5. `gcc` / `<Ctrl-/>` - Toggle comment
+6. `<Ctrl-\>` - Toggle terminal
+7. `<Esc><Esc>` - Exit terminal mode
+8. `<Ctrl-PageUp/Down>` - Cycle between splits
+9. `<Space>ca` - Code actions
+10. `*` - Search word under cursor
+11. `gf` - Go to file under cursor
 
 **Learn this week:**
 - Basic movement: `h/j/k/l`, `w/b`, `0/$`
