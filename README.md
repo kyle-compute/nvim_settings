@@ -2,6 +2,16 @@
 
 My personal Neovim configuration based on LazyVim, optimized for Python AI agent development.
 
+## ⚡ Quick Start
+
+**Before installing, you MUST have:**
+1. Neovim >= 0.9.0
+2. Git
+3. A [Nerd Font](https://www.nerdfonts.com/) installed and set in your terminal
+4. `ripgrep` and `fd` (or `fd-find` on Ubuntu/Debian)
+
+**See [Prerequisites](#prerequisites) below for detailed installation commands.**
+
 ## Features
 
 - 🐍 **Python LSP** with Pyright for type checking and completions
@@ -55,11 +65,16 @@ brew install git ripgrep fd
 brew install zathura
 ```
 
+### Python (Required for Python Development)
+- **Python 3.8+** with `python3-venv` package
+
 ### Python Development Tools (auto-installed via Mason)
 The following will be installed automatically when you first open Neovim:
 - `pyright` - Python LSP server
 - `ruff` - Python linter/formatter
 - `debugpy` - Python debugger
+
+**Note:** These Python tools are installed by Mason inside Neovim, but you need Python itself installed on your system first.
 
 ## Installation
 
