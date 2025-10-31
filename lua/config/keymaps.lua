@@ -5,6 +5,6 @@
 -- Terminal mode: Press Esc twice to exit terminal mode
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
--- Navigate between code splits (like Chrome tabs)
-vim.keymap.set("n", "<C-PageDown>", "<C-w>w", { desc = "Next split" })
-vim.keymap.set("n", "<C-PageUp>", "<C-w>W", { desc = "Previous split" })
+-- Navigate between buffers (like Chrome tabs) - skips file explorer
+vim.keymap.set("n", "<C-PageDown>", ":bnext<CR>", { desc = "Next buffer", silent = true })
+vim.keymap.set("n", "<C-PageUp>", ":bprevious<CR>", { desc = "Previous buffer", silent = true })

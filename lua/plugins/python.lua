@@ -65,6 +65,13 @@ return {
     },
     opts = {
       name = { "venv", ".venv", "env", ".env" },
+      -- Enable finding hidden venv folders
+      fd_binary_name = "fd",
+      search_venv_managers = true,
+      search_workspace = true,
+      -- Show hidden files
+      enable_debug_output = false,
+      notify_user_on_activate = true,
     },
     event = "VeryLazy",
     keys = {
