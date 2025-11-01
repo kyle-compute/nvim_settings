@@ -14,6 +14,7 @@ return {
     keys = {
       {
         "<leader>?",
+        mode = { "n", "v" },  -- Override LazyVim's which-key buffer keymaps
         function()
           local config_path = vim.fn.stdpath("config")
           local cheatsheet_file = config_path .. "/nvim-keybinds.md"
