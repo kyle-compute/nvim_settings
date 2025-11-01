@@ -1,13 +1,9 @@
 return {
-  -- SchemaStore for JSON/YAML schemas
-  {
-    "b0o/schemastore.nvim",
-  },
-
   -- TypeScript/JavaScript LSP
+  -- Note: SchemaStore is already provided by lang.json extra in example.lua
   {
     "neovim/nvim-lspconfig",
-    dependencies = { "b0o/schemastore.nvim" },
+    dependencies = { "b0o/SchemaStore.nvim" },
     opts = function(_, opts)
       local schemastore = require("schemastore")
       opts.servers = opts.servers or {}
